@@ -1,38 +1,15 @@
-import {ref} from "vue"
-interface RequestParams {
-  url: string;
-  method?: "GET" | "OPTIONS" | "HEAD" | "POST" | "PUT";
-  data?: { [k: string]: any }
-}
-
-export const request = ({
-  url,
-  method = 'GET',
-  data = {}
-}: RequestParams) => {
-  return new Promise((resolve, reject) => {
-    uni.request({
-      url,
-      method,
-      data,
-      success: (res) => {
-        resolve(res)
-      },
-      fail: (e) => {
-        reject(e)
-      }
-    })
-  })
-}
-
-
-
+import { request } from './request'
+import {
+	PersonalizedRes,
+	PlaylistDetailRes,
+	CommentPlaylistRes
+} from './type'
 export const homepageApi = () => {
   return request({
     url: 'https://zyxcl.xyz/music/api/homepage/block/page'
   })
 }
-
+// 轮播图
 export const bannerApi = () => {
   return request({
     url: 'https://zyxcl.xyz/music/api/banner'
@@ -47,13 +24,8 @@ export const ballApi = () => {
 }
 
 
-export const personalizedApi = () => {
-  return request({
-    url: 'https://zyxcl.xyz/music/api/personalized'
-  })
-}
 
-
+// 
 // playlist/track/all?id=24381616
 export const playlistApi = (id: number)=>{
 	return request({
@@ -62,4 +34,29 @@ export const playlistApi = (id: number)=>{
 			id
 		}
 	})
+}
+// 歌单评论
+export const commentPlaylistApi=(id:string)=>{
+	return request<CommentPlaylistRes>({
+		url:'https://zyxcl.xyz/music/api/comment/playlist',
+		data:{
+			id
+		}
+	})
+}
+// 推荐歌单
+export const personalizedApi = () => {
+  return request<PersonalizedRes>({
+    url: 'https://zyxcl.xyz/music/api/personalized'
+  })
+}
+
+// 歌单详情
+export const playlistDetailApi = (id: string) => {
+  return request<PlaylistDetailRes>({
+    url: 'https://zyxcl.xyz/music/api/playlist/detail',
+    data: {
+      id
+    }
+  })
 }

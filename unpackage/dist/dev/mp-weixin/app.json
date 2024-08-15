@@ -12,14 +12,20 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
+    "color": "#333333",
+    "selectedColor": "#ff0000",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "主页"
+        "text": "主页",
+        "iconPath": "static/icon/faxian.png",
+        "selectedIconPath": "static/icon/faxian_1.png"
       },
       {
         "pagePath": "pages/mine/mine",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "static/icon/wode.png",
+        "selectedIconPath": "static/icon/wode_1.png"
       }
     ]
   },

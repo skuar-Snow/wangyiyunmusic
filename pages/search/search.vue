@@ -5,7 +5,7 @@
 
 <template>
 	<view>
-		这是搜素页面
+		<input type="text" />
 	</view>
 </template>
 
