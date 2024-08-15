@@ -1,18 +1,14 @@
 import { request } from './request'
-<<<<<<< HEAD
-<<<<<<< HEAD
 import type { RankingRes  } from './type'
-=======
-import type {hotSearchLisr,SearchsuggestRes,searchList} from "./type"
-
->>>>>>> 31fd4f847494ab77cb2b84d2ab996de7ebed7aa0
-=======
 import {
 	PersonalizedRes,
 	PlaylistDetailRes,
-	CommentPlaylistRes
+	CommentPlaylistRes,
+	hotSearchLisr,
+	SearchsuggestRes,
+	searchList
 } from './type'
->>>>>>> jkb
+
 export const homepageApi = () => {
   return request({
     url: 'https://zyxcl.xyz/music/api/homepage/block/page'
@@ -44,9 +40,6 @@ export const playlistApi = (id: number)=>{
 		}
 	})
 }
-<<<<<<< HEAD
-
-<<<<<<< HEAD
 // /toplist
 export const toplistApi = () => {
   return request<RankingRes>({
@@ -58,54 +51,11 @@ export const toplistApi = () => {
 export const officialListApi = (id: string) => {
 	return request({
 		url: `https://zyxcl.xyz/music/api//playlist/track/all?id=${id}&limit=3&offset=1`,
-=======
-
-//热门搜索列表
-// https://zyxcl.xyz/music/api//search/hot
-export const SearchListApi = ()=>{
-	return request<hotSearchLisr>({
-		url:"https://zyxcl.xyz/music/api/search/hot/detail"
 	})
 }
 
 
 
-
-//搜索建议接口
-// /search/suggest?keywords=海阔天空&type=mobile
-export const SearchsuggestApi = (keywords :string,type: string)=>{
-	return request<SearchsuggestRes>({
-		url:"https://zyxcl.xyz/music/api//search/suggest",
-		data:{
-			keywords,
-			type
-		}
-	})
-}
-
-
-
-//搜索接口
-// https://zyxcl.xyz/music/api/search
-export const SearchtApi = (keywords :string)=>{
-	return request<searchList>({
-		url:"https://zyxcl.xyz/music/api/search",
-		data:{
-			keywords,
-		}
->>>>>>> 31fd4f847494ab77cb2b84d2ab996de7ebed7aa0
-	})
-}
-=======
-// 歌单评论
-export const commentPlaylistApi=(id:string)=>{
-	return request<CommentPlaylistRes>({
-		url:'https://zyxcl.xyz/music/api/comment/playlist',
-		data:{
-			id
-		}
-	})
-}
 // 推荐歌单
 export const personalizedApi = () => {
   return request<PersonalizedRes>({
@@ -122,4 +72,48 @@ export const playlistDetailApi = (id: string) => {
     }
   })
 }
->>>>>>> jkb
+
+
+
+//搜索建议接口
+// /search/suggest?keywords=海阔天空&type=mobile
+export const SearchsuggestApi = (keywords :string,type: string)=>{
+	return request<SearchsuggestRes>({
+		url:"https://zyxcl.xyz/music/api//search/suggest",
+		data:{
+			keywords,
+			type
+		}
+	})
+}
+
+
+//热门搜索列表
+// https://zyxcl.xyz/music/api//search/hot
+export const SearchListApi = ()=>{
+	return request<hotSearchLisr>({
+		url:"https://zyxcl.xyz/music/api/search/hot/detail"
+	})
+}
+
+//搜索接口
+// https://zyxcl.xyz/music/api/search
+export const SearchtApi = (keywords :string)=>{
+	return request<searchList>({
+		url:"https://zyxcl.xyz/music/api/search",
+		data:{
+			keywords,
+		}
+	})
+}
+
+// 歌单评论
+export const commentPlaylistApi=(id:string)=>{
+	return request<CommentPlaylistRes>({
+		url:'https://zyxcl.xyz/music/api/comment/playlist',
+		data:{
+			id
+		}
+	})
+}
+

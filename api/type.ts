@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 // 歌单详情接口
 export interface Song {
   name: string;
@@ -91,7 +89,9 @@ export interface searchListInerartists{
 	id: number,
 	img1v1Url: string,
 	name: string
-=======
+}
+
+
 // /personalized
 // 推荐歌单接口
 export interface  PersonalizedItem{
@@ -159,5 +159,4 @@ export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
->>>>>>> jkb
 }
