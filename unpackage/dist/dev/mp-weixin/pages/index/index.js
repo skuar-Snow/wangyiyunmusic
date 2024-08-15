@@ -2,14 +2,9 @@
 const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
 if (!Array) {
-  const _easycom_uni_icons2 = common_vendor.resolveComponent("uni-icons");
-  const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
-  (_easycom_uni_icons2 + _easycom_uni_section2)();
-}
-const _easycom_uni_icons = () => "../../uni_modules/uni-icons/components/uni-icons/uni-icons.js";
-const _easycom_uni_section = () => "../../uni_modules/uni-section/components/uni-section/uni-section.js";
-if (!Math) {
-  (_easycom_uni_icons + _easycom_uni_section)();
+  const _component_uni_icons = common_vendor.resolveComponent("uni-icons");
+  const _component_uni_section = common_vendor.resolveComponent("uni-section");
+  (_component_uni_icons + _component_uni_section)();
 }
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "index",

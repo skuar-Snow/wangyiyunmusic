@@ -1,16 +1,24 @@
 import { request } from './request'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import type { RankingRes  } from './type'
 =======
 import type {hotSearchLisr,SearchsuggestRes,searchList} from "./type"
 
 >>>>>>> 31fd4f847494ab77cb2b84d2ab996de7ebed7aa0
+=======
+import {
+	PersonalizedRes,
+	PlaylistDetailRes,
+	CommentPlaylistRes
+} from './type'
+>>>>>>> jkb
 export const homepageApi = () => {
   return request({
     url: 'https://zyxcl.xyz/music/api/homepage/block/page'
   })
 }
-
+// 轮播图
 export const bannerApi = () => {
   return request({
     url: 'https://zyxcl.xyz/music/api/banner'
@@ -25,13 +33,8 @@ export const ballApi = () => {
 }
 
 
-export const personalizedApi = () => {
-  return request({
-    url: 'https://zyxcl.xyz/music/api/personalized'
-  })
-}
 
-
+// 
 // playlist/track/all?id=24381616
 export const playlistApi = (id: number)=>{
 	return request({
@@ -41,6 +44,7 @@ export const playlistApi = (id: number)=>{
 		}
 	})
 }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 // /toplist
@@ -92,3 +96,30 @@ export const SearchtApi = (keywords :string)=>{
 >>>>>>> 31fd4f847494ab77cb2b84d2ab996de7ebed7aa0
 	})
 }
+=======
+// 歌单评论
+export const commentPlaylistApi=(id:string)=>{
+	return request<CommentPlaylistRes>({
+		url:'https://zyxcl.xyz/music/api/comment/playlist',
+		data:{
+			id
+		}
+	})
+}
+// 推荐歌单
+export const personalizedApi = () => {
+  return request<PersonalizedRes>({
+    url: 'https://zyxcl.xyz/music/api/personalized'
+  })
+}
+
+// 歌单详情
+export const playlistDetailApi = (id: string) => {
+  return request<PlaylistDetailRes>({
+    url: 'https://zyxcl.xyz/music/api/playlist/detail',
+    data: {
+      id
+    }
+  })
+}
+>>>>>>> jkb

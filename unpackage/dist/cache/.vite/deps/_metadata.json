@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "hash": "a7d2ceda",
   "configHash": "5f270d0d",
   "lockfileHash": "ae13c8a7",
@@ -17,6 +18,12 @@
   "browserHash": "1c187730",
 >>>>>>> 5047312c8ed3c907697007db7227498d5ef41099
 >>>>>>> 31fd4f847494ab77cb2b84d2ab996de7ebed7aa0
+=======
+  "hash": "3a4c2bac",
+  "configHash": "1510cc72",
+  "lockfileHash": "ae13c8a7",
+  "browserHash": "b14a3155",
+>>>>>>> jkb
   "optimized": {},
   "chunks": {}
 }
