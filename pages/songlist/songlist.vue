@@ -19,6 +19,7 @@ const getComment=async(id:string)=>{
 	const res=await commentPlaylistApi(id)
 	hotComments.value=res.data.hotComments
 	comments.value=res.data.comments
+	console.log(comments)
 	
 }
 onLoad(async(options)=>{
