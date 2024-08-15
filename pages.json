@@ -16,14 +16,14 @@
 			"path" : "pages/search/search",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "搜索"
 			}
 		},
 		{
 			"path" : "pages/songlist/songlist",
 			"style" : 
 			{
-				"navigationBarTitleText" : ""
+				"navigationBarTitleText" : "歌单列表"
 			}
 		}
 	],
