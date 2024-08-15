@@ -1,7 +1,4 @@
 
-
-
-<<<<<<< HEAD
 // 歌单详情接口
 export interface Song {
   name: string;
@@ -37,7 +34,6 @@ export interface RankingRes {
 	code: number;
 	list: RankingItem[];
 }
-=======
 // 热门搜素接口
 export interface hotSearchLisr {
 	code:number,
@@ -95,4 +91,3 @@ export interface searchListInerartists{
 	img1v1Url: string,
 	name: string
 }
->>>>>>> 31fd4f847494ab77cb2b84d2ab996de7ebed7aa0
