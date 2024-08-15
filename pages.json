@@ -25,6 +25,13 @@
 			{
 				"navigationBarTitleText" : "歌单列表"
 			}
+		},
+		{
+			"path" : "pages/rankinglist/rankinglist",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"tabBar": {
