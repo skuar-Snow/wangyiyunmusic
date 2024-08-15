@@ -15,7 +15,7 @@ export const request = ({
       url,
       method,
       data,
-      success: (res: any) => {
+      success: (res) => {
         resolve(res)
       },
       fail: (e) => {
@@ -55,9 +55,9 @@ export const personalizedApi = () => {
 
 
 // playlist/track/all?id=24381616
-export const playlistApi = (id)=>{
+export const playlistApi = (id: number)=>{
 	return request({
-		url: `https://zyxcl.xyz/music/api/playlist/track/all?id=${id}`,
+		url: `https://zyxcl.xyz/music/api/playlist/track/all`,
 		data:{
 			id
 		}
