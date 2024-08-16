@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/mine/mine",
     "pages/search/search",
-    "pages/songlist/songlist"
+    "pages/songlist/songlist",
+    "pages/rankinglist/rankinglist",
+    "pages/player/player"
   ],
   "window": {
     "navigationBarTextStyle": "black",

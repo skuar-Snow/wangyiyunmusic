@@ -296,3 +296,90 @@ export interface SongUrlRes {
   code: number;
   data: SongUrl[];
 }
+
+
+
+
+
+
+
+
+
+
+//banners 接口
+export interface BannerNewItem {
+    bannerId: string
+    pic: string
+    [key: string]: any
+}
+
+// 榜单 
+export interface SongListItem {
+    uiElement: {
+        image: {
+            imageUrl: string
+        }
+        subTitle: {
+            title: string
+        }
+    }
+    resourceExtInfo:{
+        song: {
+            al: {
+                name: string
+                id: string
+                picUrl: string
+                pic: number
+            }
+            ar: {
+                name: string
+                id: number
+            }[]
+        }
+        
+    }
+    resourceId:string
+}
+
+// 推荐歌单接口
+export interface RecommendedPlay {
+    creativeId?: string
+    uiElement?: {
+        image:{
+            imageUrl: string
+        }
+        mainTitle: {
+            title: string
+        }
+    }
+    resources?: SongListItem[]
+
+    [key: string]: any
+}
+
+export interface HomePageDateItem {
+    uiElement?: {
+        subTitle?: {
+            title?: string
+        }
+    }  // 标题
+    creatives?:RecommendedPlay[]    // 推荐歌单
+    extInfo?: {  // banner轮播图
+        banners: BannerNewItem[]
+    }   
+    [key: string]: any
+}
+
+export interface HomePageDate {
+    blocks: HomePageDateItem []
+    [key: string]: any
+}
+
+
+export interface HomePage {
+    data:{
+        code: number
+        data: HomePageDate
+        [key: string]: any
+    }
+}
