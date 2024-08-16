@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // 轮播图
 export interface BannerItem {
 	imageUrl:string;
@@ -35,8 +34,7 @@ export interface GoodMusicItem {
 export interface GoodMusicRes {
 	code:number;
 	data:GoodMusicItem[]
-
-=======
+}
 // 歌单详情接口
 export interface Song {
   name: string;
@@ -199,5 +197,4 @@ export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
->>>>>>> 0f525d6578fe7da1c96b0f35c2c812ad0ed75d74
 }

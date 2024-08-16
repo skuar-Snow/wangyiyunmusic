@@ -86,17 +86,20 @@ goodMusicApi()
 	      </view>
 	    </view>
 	  </scroll-view>
-	  <!-- 猜你喜欢的华语好歌 -->
-	  <uni-section title="{{ goodMusic.uiElement.subTitle.title }}" type="line">
-			{{ goodMusic.uiElement.subTitle.title }}
-			
-		</uni-section>
+	  <!-- 随机歌曲 -->
+	  <view class="random">
+	  	  <uni-section type="line"></uni-section>
+	  		<text>{{ goodMusic.uiElement.subTitle.title }}</text>
+	  </view>
+	           
 	  <scroll-view class="changeMusic" scroll-x show-scrollbar=false>
 	  	<view class="outMusic" v-for="item in goodMusic.creatives" >
 	  	 <view class=""  v-for="v in item.resources"> 
-			 <img :src="v.uiElement.image.imageUrl" alt="" />
-	  	  	<text>{{v.resourceExtInfo.song.name}}</text>
-					
+			    	<img :src="v.uiElement.image.imageUrl" alt="" />
+			    <view class="left">
+			    	<text>{{v.resourceExtInfo.song.name}}</text>
+			    	<text>{{v.resourceExtInfo.artists[0].name}}</text>
+			    </view>
 	  	 </view>
 	  	</view>
 	  </scroll-view>
@@ -178,6 +181,15 @@ goodMusicApi()
 			height:100rpx;
 			display: flex;
 			justify-content: flex-start;
+			font-size: 30rpx;
+			.left{
+				display: flex;
+				flex-direction: column;
+				text:nth-child(2){
+					font-size: 25rpx;
+					color: #999;
+				}
+			}
 			img{
 				width: 80rpx;
 				height: 80rpx;
@@ -188,6 +200,10 @@ goodMusicApi()
 			}
 		}
 	}
-
+}
+.random{
+	display: flex;
+	align-items: center;
+	font-size: 25rpx;
 }
 </style>
