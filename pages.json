@@ -35,6 +35,12 @@
 				"navigationBarBackgroundColor": "#c84341",
 				"navigationBarTextStyle": "white"
 			}
+		},
+		{
+			"path" : "pages/player/player",
+			"style" : 
+			{
+			}
 		}
 	],
 	"tabBar": {

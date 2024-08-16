@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { bannerApi, personalizedApi, ballApi, goodMusicApi } from '../../api/index'
+import { bannerApi, personalizedApi, ballApi, goodMusicApi,homepageApi } from '../../api/index'
 import type{ BannerItem, BallItem, PersonalizedItem, GoodMusicItem  } from '../../api/type.ts'
 const banners = ref<BannerItem[]>([])
 const playlist = ref<PersonalizedItem[]>([])
@@ -22,8 +22,10 @@ const goRankinglist = (item) => {
 	}
 }
 
-
-
+//ts太难写这个接口
+homepageApi().then(res =>{
+	console.log(res.data)
+})
 
 bannerApi().then(res => {
   banners.value = res.data.banners
@@ -87,9 +89,7 @@ goodMusicApi()
 	    </view>
 	  </scroll-view>
 	  <!-- 猜你喜欢的华语好歌 -->
-	  <uni-section title="{{ goodMusic.uiElement.subTitle.title }}" type="line">
-			{{ goodMusic.uiElement.subTitle.title }}
-			
+	  <uni-section :title="goodMusic.uiElement.subTitle.title" type="line">
 		</uni-section>
 	  <scroll-view class="changeMusic" scroll-x show-scrollbar=false>
 	  	<view class="outMusic" v-for="item in goodMusic.creatives" >

@@ -29,6 +29,13 @@ onLoad(async(options)=>{
 const open=()=>{
 	popup.value.open('bottom')
 }
+
+const goPlayer = (id: number) =>{
+	uni.navigateTo({
+		url: `/pages/player/player?id=${id}`
+	})
+}
+
 </script>
 
 <template>
@@ -70,6 +77,7 @@ const open=()=>{
 			link
 			clickable
 			:note="item.ar.map(v => v.name).join('/')"
+			 @click="goPlayer(item.id)"
 			>
 				<template v-slot:header>
 					<view class="no">{{index+1}}</view>

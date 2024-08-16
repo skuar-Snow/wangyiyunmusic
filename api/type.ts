@@ -272,3 +272,27 @@ export interface searchListInerartists{
 	img1v1Url: string,
 	name: string
 }
+
+
+
+// 歌曲详情
+export interface SongDetailRes {
+  code: number;
+  songs: Song[];
+}
+// 歌词
+export interface LyricRes {
+  lrc: {
+    lyric: string;
+  }
+}
+// 音乐url
+export interface SongUrl {
+  url: string;
+  time: number;
+  id: number;
+}
+export interface SongUrlRes {
+  code: number;
+  data: SongUrl[];
+}
