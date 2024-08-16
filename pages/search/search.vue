@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref,watch } from "vue"
 import { SearchListApi,SearchsuggestApi,SearchtApi } from '../../api/index'
-import type { hotInnerList,searchsuggestIner,searchListIner } from '../../api/type'
+import type { hotInnerList,searchsuggestIner,searchListIner, } from '../../api/type'
 // 热搜歌曲
 const HotList =ref<hotInnerList[]>([])
 //搜索建议
@@ -124,8 +124,10 @@ const gotable = (keyword: string)=>{
 		   >
 		   <view class="item">
 				<view>{{item.name}}</view>
-				<view>{{item.album.name}}</view>
-				<view>{{item.album.artists}}</view>
+				<view>专辑:{{item.album.name}}</view>
+				<view class="">
+					歌手{{item.artists.map(v=>{return v.name}).join("| ")}}&nbsp;
+				</view>
 		   </view>
 		   </view>
 		 </view>

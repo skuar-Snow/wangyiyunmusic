@@ -1,6 +1,38 @@
+// 歌单详情接口
+export interface Song {
+  name: string;
+  id: number;
+  ar: { id: number; name: string; }[];
+  al: {
+    id: number;
+    name: string;
+    picUrl: string;
+  }
+}
+// 排行榜接口
+export interface RankingItem {
+	ToplistType?: string;
+	id: number;
+	coverImgUrl: string;
+	name: string;
+	playCount: number;
+	updateFrequency: string;
+	songs: {
+		name: string;
+		id: number;
+		ar: { id: number; name: string; }[];
+		al: {
+		id: number;
+		name: string;
+		picUrl: string;
+		}
+	}[];
+}
 
-
-
+export interface RankingRes {
+	code: number;
+	list: RankingItem[];
+}
 // 热门搜素接口
 export interface hotSearchLisr {
 	code:number,
@@ -45,16 +77,90 @@ export interface innersearch{
 export interface searchListIner{
 	name: string,
 	album:searchListInerAlbum
+	artists: searchListInerartists[]
 }
 
 export interface searchListInerAlbum{
 	id: number,
 	name: string,
-	artists: searchListInerartists[]
+	
 }
 
 export interface searchListInerartists{
 	id: number,
 	img1v1Url: string,
 	name: string
+<<<<<<< HEAD
+=======
+}
+
+
+// /personalized
+// 推荐歌单接口
+export interface  PersonalizedItem{
+	id:number;
+	name:string;
+	picUrl:string;
+	playCount:number;
+	trackCount:number;
+	trackNumberUpdateTime: number;
+} 
+export interface PersonalizedRes{
+	code:number;
+	result:PersonalizedItem[]
+}
+
+// 歌单详情接口
+export interface Song{
+	name:string;
+	id:number;
+	ar:{id:number;name:string}[];
+	al:{
+		id:number;
+		name:string;
+		picUrl:string;
+	}
+}
+export interface PlaylistDetail{
+	description:string;
+	coverImgUrl:string;
+	name:string;
+	tage:string[];
+	playCount:number;
+	id:number;
+	commentCount:number;
+    shareCount:number;
+	subscribedCount:number;
+	creator:{
+		avatarUrl:string;
+		nickname:string;
+	}
+	tracks:Song[]
+}
+
+export interface PlaylistDetailRes{
+	code:number;
+	playlist:PlaylistDetail;
+}
+// 歌单评论
+export interface CommentItem {
+  commentId: number;
+  content: string;
+  richContent: string;
+  ipLocation: {
+    location: string;
+  }
+  timeStr: string;
+  time: number;
+  user: {
+    nickname: string;
+    userId: number;
+    avatarUrl: string;
+  }
+}
+export interface CommentPlaylistRes{
+	comments: CommentItem[];
+	  hotComments: CommentItem[];
+	  total: number;
+>>>>>>> 0f525d6578fe7da1c96b0f35c2c812ad0ed75d74
 }

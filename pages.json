@@ -16,7 +16,8 @@
 			"path" : "pages/search/search",
 			"style" : 
 			{
-				"navigationBarTitleText" : "搜索"
+				"navigationBarTitleText" : "搜索",
+				"navigationBarBackgroundColor": "#c84341"
 			}
 		},
 		{
@@ -24,6 +25,15 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "歌单列表"
+			}
+		},
+		{
+			"path" : "pages/rankinglist/rankinglist",
+			"style" : 
+			{
+				"navigationBarTitleText" : "排行榜",
+				"navigationBarBackgroundColor": "#c84341",
+				"navigationBarTextStyle": "white"
 			}
 		}
 	],

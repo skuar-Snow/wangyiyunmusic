@@ -1,19 +1,23 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 const api_index = require("../../api/index.js");
-const playlist = common_vendor.ref([]);
-const id = location.hash.slice(location.hash.indexOf("?") + 1).split("=")[1];
-if (id) {
-  api_index.playlistApi(id).then((res) => {
-    console.log(res.data);
-    playlist.value = res.data;
-  }).catch((error) => {
-    console.error("请求错误:", error);
-  });
-}
-const _sfc_main = {};
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {};
-}
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
-wx.createPage(MiniProgramPage);
+const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
+  __name: "songlist",
+  setup(__props) {
+    const playlistDetail = common_vendor.ref({});
+    common_vendor.ref([]);
+    common_vendor.ref([]);
+    const getDetail = async (id) => {
+      const res = await api_index.playlistDetailApi(id);
+      playlistDetail.value = res.data.playList;
+      console.log(playlistDetail);
+    };
+    common_vendor.onLoad(async (options) => {
+      getDetail(options == null ? void 0 : options.id);
+    });
+    return (_ctx, _cache) => {
+      return {};
+    };
+  }
+});
+wx.createPage(_sfc_main);
