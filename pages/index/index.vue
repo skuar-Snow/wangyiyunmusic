@@ -10,6 +10,16 @@ const goSearch = () => {
     url: "/pages/search/search"
   })
 }
+// 红色块
+const goRankinglist = (item) => {
+	if(item.name === "排行榜"){
+		uni.navigateTo({
+			url:"/pages/rankinglist/rankinglist"
+		})
+	}
+}
+
+
 
 bannerApi().then(res => {
   banners.value = res.data.banners
@@ -46,7 +56,7 @@ const goDetail = (id) => {
 	  </view>
 	  <scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction: row;">
 	    <view class="ball-wrap">
-	      <view class="ball" v-for="item in ballList" :key="item.id">
+	      <view class="ball" v-for="item in ballList" :key="item.id" @click="goRankinglist(item)">
 	        <image :src="item.iconUrl" mode="widthFix"></image>
 	        <view class="">
 	          {{item.name}}
