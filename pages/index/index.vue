@@ -1,41 +1,49 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { bannerApi, personalizedApi,ballApi } from '../../api/index'
-
-const banners = ref([])
-const playlist = ref([])
-const ballList = ref([])
+import { bannerApi, personalizedApi, ballApi, goodMusicApi } from '../../api/index'
+import type{ BannerItem, BallItem, PersonalizedItem, GoodMusicItem  } from '../../api/type.ts'
+const banners = ref<BannerItem[]>([])
+const playlist = ref<PersonalizedItem[]>([])
+const ballList = ref<BallItem[]>([])
+const goodMusic = ref<GoodMusicItem[]>([])
 const goSearch = () => {
   uni.navigateTo({
     url: "/pages/search/search"
   })
 }
-
+//轮播图
 bannerApi().then(res => {
   banners.value = res.data.banners
 })
-
+//每日推荐，私人FM等的图标
 ballApi().then(res =>{
   ballList.value = res.data.data
 })
-
+//推荐歌单
 personalizedApi().then(res => {
-  console.log(res.data.result);
   playlist.value = res.data.result
 })
 
-const goDetail = (id) => {
+const goDetail = (id:number) => {
   uni.navigateTo({
     url: `/pages/songlist/songlist?id=${id}`
   })
 }
-
+//随机歌单
+goodMusicApi()
+.then(res => {
+	goodMusic.value = res.data.data.blocks[3]
+  console.log(res.data.data.blocks[3].creatives)
+})
 </script>
 
 <template>
 	<view class="header">
 	    <uni-icons type="list" size="30"></uni-icons>
-	    <view class="goSearch" @click="goSearch">搜索</view>
+	    <view class="goSearch" @click="goSearch">
+			<uni-icons type="search" size="20" color="#aaa"></uni-icons>
+			<text>搜索</text>
+		</view>
 	</view>
 	  <view class="swiper-wrap">
 	    <swiper indicator-dots>
@@ -44,7 +52,7 @@ const goDetail = (id) => {
 	      </swiper-item>
 	    </swiper>
 	  </view>
-	  <scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction: row;">
+	  <scroll-view scroll-x enable-flex show-scrollbar="true" style="flex-direction: row;">
 	    <view class="ball-wrap">
 	      <view class="ball" v-for="item in ballList" :key="item.id">
 	        <image :src="item.iconUrl" mode="widthFix"></image>
@@ -54,45 +62,43 @@ const goDetail = (id) => {
 	      </view>
 	    </view>
 	  </scroll-view>
-	  
+	  <!-- 推荐歌单 -->
 	  <uni-section title="推荐歌单" type="line"></uni-section>
 	
-	  <scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction: row;">
-	    <view class="list-wrap">
+	  <scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction: row;" >
+	    <view class="list-wrap" >
 	      <view class="song" v-for="item in playlist" :key="item.id" @click="goDetail(item.id)">
-	        <view class="pic">
 	          <image :src="item.picUrl" mode="widthFix"></image>
-	        </view>
-	        <view class="">
 	          {{item.name}}
-	        </view>
 	      </view>
 	    </view>
 	  </scroll-view>
-	  
-	  <uni-section title="说唱 | 电子 | 摇滚 热门榜单" type="line"></uni-section>
-	  <view class="">
-	  	<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
-	  		<swiper-item>
-	  			<view class="swiper-item"></view>
-	  		</swiper-item>
-	  		<swiper-item>
-	  			<view class="swiper-item"></view>
-	  		</swiper-item>
-	  	</swiper>
-	  </view>
+	  <!-- 猜你喜欢的华语好歌 -->
+	  <uni-section title="{{ goodMusic.uiElement.subTitle.title }}" type="line">
+			{{ goodMusic.uiElement.subTitle.title }}
+			
+		</uni-section>
+	  <scroll-view class="changeMusic" scroll-x show-scrollbar=false>
+	  	<view class="outMusic" v-for="item in goodMusic.creatives" >
+	  	 <view class=""  v-for="v in item.resources"> 
+			 <img :src="v.uiElement.image.imageUrl" alt="" />
+	  	  	<text>{{v.resourceExtInfo.song.name}}</text>
+					
+	  	 </view>
+	  	</view>
+	  </scroll-view>
 </template>
 
 
 <style lang="scss">
 	.header {
-	  padding: 20rpx;
 	  display: flex;
 	  width: 100%;
 	  .goSearch {
 	    margin-left: 40rpx;
 		width: 600rpx;
-	    background: #dddddd;
+	    background-color: #eeeeee;
+	    color: #aaa;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -134,12 +140,6 @@ const goDetail = (id) => {
 	    margin-left: 20rpx;
 	    padding: 20rpx 0;
 	    font-size: 12px;
-	    .pic {
-	      width: 250rpx;
-	      height: 250rpx;
-	      overflow: hidden;
-	      border-radius: 20rpx;
-	    }
 	    image {
 	      width: 250rpx;
 	      height: 250rpx;
@@ -148,5 +148,33 @@ const goDetail = (id) => {
 	}
 .uni-section-header__decoration line{
 	background-color: #c84341 !important;
+}
+.changeMusic{
+	display: flex;  
+	height: 300rpx;
+	padding: 20rpx;
+	.outMusic{
+		width: 2000rpx;
+		height:100rpx;
+		overflow-x: scroll;
+		display: flex;
+		// padding: 20rpx;
+		box-sizing: border-box;
+		>view{
+			width: 80%;
+			height:100rpx;
+			display: flex;
+			justify-content: flex-start;
+			img{
+				width: 80rpx;
+				height: 80rpx;
+				border-radius: 10rpx;
+			}
+			text{
+				text-indent: 20rpx;
+			}
+		}
+	}
+
 }
 </style>
