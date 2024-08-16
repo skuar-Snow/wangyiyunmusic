@@ -13,11 +13,12 @@ import type{ BannerRes,
 			 searchList,
 			 SongDetailRes,
 			 LyricRes,
-			 SongUrlRes
+			 SongUrlRes,
+			 HomePage
 }from './type.ts'
 
 export const homepageApi = () => {
-  return request({
+  return request<HomePage>({
     url: 'https://zyxcl.xyz/music/api/homepage/block/page'
   })
 }
@@ -37,7 +38,7 @@ export const ballApi = () => {
 }
 
 // playlist/track/all?id=24381616
-export const playlistApi = (id: number)=>{
+export const playlistApi = (id: string)=>{
 	return request({
 		url: `https://zyxcl.xyz/music/api/playlist/track/all`,
 		data:{
