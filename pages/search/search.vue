@@ -8,6 +8,9 @@ const HotList =ref<hotInnerList[]>([])
 const suggestList =ref<searchsuggestIner[]>([])
 //搜索歌曲list
 const searchTable = ref<searchListIner[]>([])
+//热门搜索歌曲列表
+const hotSearchList = ref<string[]>([])
+
 let show = ref<boolean>(false)
 let showclose = ref<boolean>(false)
 let showCon = ref<boolean>(true)
@@ -50,6 +53,8 @@ const gotable = (keyword: string)=>{
 	showCon.value=false
 	showSuggest.value=false
 	keyWord.value=keyword
+	hotSearchList.value.push(keyword)
+	//存到本地
 	SearchtApi(keyWord.value).then(res=>{
 		console.log(res.data.result.songs)
 		searchTable.value=res.data.result.songs

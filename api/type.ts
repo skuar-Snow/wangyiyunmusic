@@ -1,42 +1,57 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c
 // 轮播图
 export interface BannerItem {
 	imageUrl:string;
 	targetId:number
 }
+
 export interface BannerRes  {
 	banners:BannerItem[]
 	code:number
 }
+
 //每日推荐图标
 export interface BallItem {
 	name:string,
 	iconUrl:string,
 	id:number
 }
+
 export interface BallRes {
 	data:BallItem[],
 	code:number
 }
+
 //推荐歌单
 export interface PersonalizedItem {
 	id:number;
 	name:string;
 	picUrl:string
 }
+
 export interface PersonalizedRes {
 	result:PersonalizedItem[]
 	code: number
 }
+
 //随机歌单
 export interface GoodMusicItem {
 	blocks:{};
 }
+
 export interface GoodMusicRes {
 	code:number;
 	data:GoodMusicItem[]
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c
 // 歌单详情接口
-export interface Song {
+ export interface Song {
   name: string;
   id: number;
   ar: { id: number; name: string; }[];
@@ -46,6 +61,7 @@ export interface Song {
     picUrl: string;
   }
 }
+
 // 排行榜接口
 export interface RankingItem {
 	ToplistType?: string;
@@ -70,6 +86,7 @@ export interface RankingRes {
 	code: number;
 	list: RankingItem[];
 }
+
 // 热门搜素接口
 export interface hotSearchLisr {
 	code:number,
@@ -130,6 +147,7 @@ export interface searchListInerartists{
 }
 
 
+
 // /personalized
 // 推荐歌单接口
 export interface  PersonalizedItem{
@@ -140,6 +158,7 @@ export interface  PersonalizedItem{
 	trackCount:number;
 	trackNumberUpdateTime: number;
 } 
+
 export interface PersonalizedRes{
 	code:number;
 	result:PersonalizedItem[]
@@ -156,6 +175,7 @@ export interface Song{
 		picUrl:string;
 	}
 }
+
 export interface PlaylistDetail{
 	description:string;
 	coverImgUrl:string;
@@ -177,6 +197,7 @@ export interface PlaylistDetailRes{
 	code:number;
 	playlist:PlaylistDetail;
 }
+
 // 歌单评论
 export interface CommentItem {
   commentId: number;
@@ -193,8 +214,71 @@ export interface CommentItem {
     avatarUrl: string;
   }
 }
+
 export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
+<<<<<<< HEAD
 }
+=======
+}
+
+// 热门搜素接口
+export interface hotSearchLisr {
+	code:number,
+	data:hotInnerList[],
+	message:string
+}
+
+export interface hotInnerList {
+	iconUrl:string,
+	score:number,
+	searchWord:string
+}
+
+
+//搜索建议接口
+export interface SearchsuggestRes{
+	code: number,
+	result : innerAllMatch
+}
+
+export interface innerAllMatch{
+	allMatch:searchsuggestIner[]
+}
+
+export interface searchsuggestIner{
+	keyword: string
+}
+
+
+//搜索接口
+export interface searchList{
+	code: number,
+	result:innersearch
+}
+
+export interface innersearch{
+	hasMore: boolean,
+	songCount: number,
+	songs:searchListIner[]
+}
+
+export interface searchListIner{
+	name: string,
+	album:searchListInerAlbum
+}
+
+export interface searchListInerAlbum{
+	id: number,
+	name: string,
+	artists: searchListInerartists[]
+}
+
+export interface searchListInerartists{
+	id: number,
+	img1v1Url: string,
+	name: string
+}
+>>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c
