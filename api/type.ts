@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c
 // 轮播图
 export interface BannerItem {
 	imageUrl:string;
@@ -38,18 +34,41 @@ export interface PersonalizedRes {
 }
 
 //随机歌单
-export interface GoodMusicItem {
-	blocks:{};
-}
+// interface mm {
+// 	uiElement: {
+// 		image: {
+// 			imageUrl:string
+// 		}
+// 	}
+//   resourceExtInfo: {
+// 		artists:{name:string}[]
+// 	}
+// }
+// interface bb {
+// 	resources:mm[]
 
-export interface GoodMusicRes {
-	code:number;
-	data:GoodMusicItem[]
-}
-<<<<<<< HEAD
-=======
+// }
+// interface cc {
+// 	creatives:bb[]
+// 	uiElement:{
+// 		subTitle:{
+// 			title:string
+// 		}
+// 	}
+// }
+// export interface GoodMusicItem {
+// 	blocks:cc[];
+// 	first:string[]
+// }
 
->>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c
+// export interface GoodMusicRes {
+// 	code:number;
+// 	data:{
+// 	blocks:cc[];
+// 	first:string[]
+//   }
+// }
+
 // 歌单详情接口
  export interface Song {
   name: string;
@@ -137,7 +156,6 @@ export interface searchListIner{
 export interface searchListInerAlbum{
 	id: number,
 	name: string,
-	
 }
 
 export interface searchListInerartists{
@@ -219,9 +237,6 @@ export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
-<<<<<<< HEAD
-}
-=======
 }
 
 // 热门搜素接口
@@ -281,4 +296,3 @@ export interface searchListInerartists{
 	img1v1Url: string,
 	name: string
 }
->>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c

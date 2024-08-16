@@ -46,7 +46,7 @@ const goDetail = (id:number) => {
 goodMusicApi()
 .then(res => {
 	goodMusic.value = res.data.data.blocks[3]
-  console.log(res.data.data.blocks[3].creatives)
+  console.log(res.data.data)
 })
 </script>
 
@@ -109,7 +109,7 @@ goodMusicApi()
 <style lang="scss">
 	.header {
 	  display: flex;
-	  width: 100%;
+	  // width: 100%;
 	  .goSearch {
 	    margin-left: 40rpx;
 		width: 600rpx;

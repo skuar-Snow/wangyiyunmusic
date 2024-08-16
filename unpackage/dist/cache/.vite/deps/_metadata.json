@@ -4,12 +4,10 @@
   "configHash": "eb35237e",
   "lockfileHash": "31f610c4",
   "browserHash": "3bd7b951",
-=======
   "hash": "4f36e16a",
   "configHash": "5f270d0d",
   "lockfileHash": "31f610c4",
   "browserHash": "89042b7a",
->>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c
   "optimized": {},
   "chunks": {}
-}
+} 
