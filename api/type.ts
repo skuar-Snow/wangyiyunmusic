@@ -1,4 +1,3 @@
-
 // 轮播图
 export interface BannerItem {
 	imageUrl:string;
@@ -213,6 +212,7 @@ export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
+
 }
 
 // 热门搜素接口
