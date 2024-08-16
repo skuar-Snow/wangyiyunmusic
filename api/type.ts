@@ -47,6 +47,7 @@ export interface PersonalizedRes {
 // interface bb {
 // 	resources:mm[]
 
+<<<<<<< HEAD
 // }
 // interface cc {
 // 	creatives:bb[]
@@ -68,6 +69,12 @@ export interface PersonalizedRes {
 // 	first:string[]
 //   }
 // }
+=======
+export interface GoodMusicRes {
+	code:number;
+	data:GoodMusicItem[]
+}
+>>>>>>> master
 
 // 歌单详情接口
  export interface Song {
@@ -238,9 +245,12 @@ export interface CommentPlaylistRes{
 	  hotComments: CommentItem[];
 	  total: number;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 73afe88b245afd102a2583c56ec0742492f07f45
+=======
+>>>>>>> master
 }
 
 // 热门搜素接口
@@ -299,6 +309,7 @@ export interface searchListInerartists{
 	id: number,
 	img1v1Url: string,
 	name: string
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 }
@@ -413,4 +424,6 @@ export interface HomePage {
         [key: string]: any
     }
 >>>>>>> 73afe88b245afd102a2583c56ec0742492f07f45
+=======
+>>>>>>> master
 }
