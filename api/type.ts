@@ -77,12 +77,13 @@ export interface innersearch{
 export interface searchListIner{
 	name: string,
 	album:searchListInerAlbum
+	artists: searchListInerartists[]
 }
 
 export interface searchListInerAlbum{
 	id: number,
 	name: string,
-	artists: searchListInerartists[]
+	
 }
 
 export interface searchListInerartists{
