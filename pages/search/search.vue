@@ -15,6 +15,7 @@ let show = ref<boolean>(false)
 let showclose = ref<boolean>(false)
 let showCon = ref<boolean>(true)
 let showSuggest = ref<boolean>(false)
+let showTable = ref<boolean>(false)
 const keyWord = ref('')
 SearchListApi().then(res=>{
 	// console.log(res.data.data)
@@ -34,14 +35,17 @@ const clear = () =>{
 	keyWord.value=''
 	show.value=false
 	showCon.value=true
+	showTable.value=false
 }
 const clear1 = () =>{
 	keyWord.value=''
+	showTable.value=false
 }
 
 const search = () =>{
 	showCon.value=false
 	showSuggest.value=true
+	showTable.value=false
 	SearchsuggestApi(keyWord.value,"mobile").then(res=>{
 		suggestList.value=res.data.result.allMatch
 	})
@@ -52,6 +56,7 @@ const gotable = (keyword: string)=>{
 	show.value=true
 	showCon.value=false
 	showSuggest.value=false
+	showTable.value=true
 	keyWord.value=keyword
 	hotSearchList.value.push(keyword)
 	//存到本地
@@ -117,7 +122,7 @@ const gotable = (keyword: string)=>{
 		</view>
 	</view>
 	
-	<view class="songTable">
+	<view class="songTable" v-if="showTable">
 		<view class="list" >
 		   <view 
 		   v-for="(item) in searchTable"

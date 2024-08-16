@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { bannerApi, personalizedApi, ballApi, goodMusicApi } from '../../api/index'
-import type{ BannerItem, BallItem, PersonalizedItem, GoodMusicItem  } from '../../api/type.ts'
-const banners = ref<BannerItem[]>([])
-const playlist = ref<PersonalizedItem[]>([])
+import { ballApi,homepageApi } from '../../api/index'
+import type{  BallItem ,BannerNewItem ,RecommendedPlay } from '../../api/type.ts'
 const ballList = ref<BallItem[]>([])
-const goodMusic = ref<GoodMusicItem[]>([])
+
+const bannersList = ref<BannerNewItem[]>([]) // banners 轮播图
+const recommendPlaylists = ref<RecommendedPlay[]>([]) // 推荐歌单
+const recommendPlaylistsTitle = ref<string>('') //推荐歌单标题
+const songSheetHost = ref<RecommendedPlay[]>([]) // 歌单排行榜
+const songSheetHostTitle =  ref<string>('') // 歌单排行榜标题
+    
+const radarPlaylist = ref<RecommendedPlay[]>([]) // 雷达歌单
+const radarPlaylistTitle =  ref<string>('') // 雷达歌单标题
+
 const goSearch = () => {
   uni.navigateTo({
     url: "/pages/search/search"
@@ -14,40 +21,44 @@ const goSearch = () => {
 
 //轮播图
 // 红色块
-const goRankinglist = (item) => {
+const goRankinglist = (item :any) => {
 	if(item.name === "排行榜"){
 		uni.navigateTo({
 			url:"/pages/rankinglist/rankinglist"
 		})
 	}
 }
-
-
-
-
-bannerApi().then(res => {
-  banners.value = res.data.banners
+homepageApi().then(res=>{
+	bannersList.value = res.data.data.blocks[0].extInfo.banners   // banners 轮播图
+	recommendPlaylists.value = res.data.data.blocks[2].creatives  // 推荐歌单
+	recommendPlaylistsTitle.value = res.data.data.blocks[2].uiElement.subTitle.title //推荐歌单 标题
+	    
+	songSheetHost.value = res.data.data.blocks[3].creatives  // 歌单排行榜
+	songSheetHostTitle.value = res.data.data.blocks[3].uiElement.subTitle.title // 歌单排行榜 标题
+	console.log(songSheetHost.value)    
+	radarPlaylist.value = res.data.data.blocks[4].creatives  // 雷达歌单
+	radarPlaylistTitle.value = res.data.data.blocks[4].uiElement.subTitle.title // 歌单排行榜 标题
 })
-//每日推荐，私人FM等的图标
+
+// //每日推荐，私人FM等的图标
 ballApi().then(res =>{
   ballList.value = res.data.data
 })
-//推荐歌单
-personalizedApi().then(res => {
-  playlist.value = res.data.result
-})
 
-const goDetail = (id:number) => {
+const goDetail = (id: string) => {
   uni.navigateTo({
     url: `/pages/songlist/songlist?id=${id}`
   })
 }
+<<<<<<< HEAD
 //随机歌单
 goodMusicApi()
 .then(res => {
 	goodMusic.value = res.data.data.blocks[3]
   console.log(res.data.data)
 })
+=======
+>>>>>>> 73afe88b245afd102a2583c56ec0742492f07f45
 </script>
 
 <template>
@@ -60,8 +71,8 @@ goodMusicApi()
 	</view>
 	  <view class="swiper-wrap">
 	    <swiper indicator-dots>
-	      <swiper-item v-for="item in banners" :key="item.imageUrl">
-	        <image :src="item.imageUrl" mode="widthFix"></image>
+	      <swiper-item v-for="item in bannersList" :key="item.pic">
+	        <image :src="item.pic" mode="widthFix"></image>
 	      </swiper-item>
 	    </swiper>
 	  </view>
@@ -76,32 +87,45 @@ goodMusicApi()
 	    </view>
 	  </scroll-view>
 	  <!-- 推荐歌单 -->
-	  <uni-section title="推荐歌单" type="line"></uni-section>
+	  <uni-section :title="recommendPlaylistsTitle" type="line"></uni-section>
 	
 	  <scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction: row;" >
 	    <view class="list-wrap" >
-	      <view class="song" v-for="item in playlist" :key="item.id" @click="goDetail(item.id)">
-	          <image :src="item.picUrl" mode="widthFix"></image>
-	          {{item.name}}
+	      <view class="song" v-for="item in recommendPlaylists" :key="item.creativeId" @click="goDetail(item.creativeId)">
+	          <image :src="item.uiElement.image.imageUrl" mode="widthFix"></image>
+	          {{item.uiElement.mainTitle.title}}
 	      </view>
 	    </view>
 	  </scroll-view>
+	  <!-- 猜你喜欢的华语好歌 -->
+	  <uni-section :title="songSheetHostTitle" type="line">
+		</uni-section>
 	  <!-- 随机歌曲 -->
 	  <view class="random">
-	  	  <uni-section type="line"></uni-section>
-	  		<text>{{ goodMusic.uiElement.subTitle.title }}</text>
 	  </view>
-	           
 	  <scroll-view class="changeMusic" scroll-x show-scrollbar=false>
-	  	<view class="outMusic" v-for="item in goodMusic.creatives" >
+	  	<view class="outMusic" v-for="item in songSheetHost" >
+			{{item.resource?.uiElement}}
 	  	 <view class=""  v-for="v in item.resources"> 
 			    	<img :src="v.uiElement.image.imageUrl" alt="" />
 			    <view class="left">
 			    	<text>{{v.resourceExtInfo.song.name}}</text>
 			    	<text>{{v.resourceExtInfo.artists[0].name}}</text>
 			    </view>
+			 <img :src="v.uiElement.image.imageUrl" alt="" />
+	  	  	<text>{{v.resourceExtInfo.song.al.name}}</text>
 	  	 </view>
 	  	</view>
+	  </scroll-view>
+	  <uni-section :title="radarPlaylistTitle" type="line"></uni-section>
+	  	
+	  <scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction: row;" >
+	    <view class="list-wrap" >
+	      <view class="song" v-for="item in radarPlaylist" :key="item.creativeId" @click="goDetail(item.creativeId)">
+	          <image :src="item.uiElement.image.imageUrl" mode="widthFix"></image>
+	          {{item.uiElement.mainTitle.title}}
+	      </view>
+	    </view>
 	  </scroll-view>
 </template>
 

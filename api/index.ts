@@ -10,11 +10,15 @@ import type{ BannerRes,
 			 CommentPlaylistRes,
 			 SearchsuggestRes,
 			 hotSearchLisr,
-			 searchList
+			 searchList,
+			 SongDetailRes,
+			 LyricRes,
+			 SongUrlRes,
+			 HomePage
 }from './type.ts'
 
 export const homepageApi = () => {
-  return request({
+  return request<HomePage>({
     url: 'https://zyxcl.xyz/music/api/homepage/block/page'
   })
 }
@@ -34,7 +38,7 @@ export const ballApi = () => {
 }
 
 // playlist/track/all?id=24381616
-export const playlistApi = (id: number)=>{
+export const playlistApi = (id: string)=>{
 	return request({
 		url: `https://zyxcl.xyz/music/api/playlist/track/all`,
 		data:{
@@ -126,4 +130,32 @@ export const SearchsuggestApi = (keywords :string,type: string)=>{
 			type
 		}
 	})
+}
+
+// 歌曲详情
+export const songDetailApi = (ids: string | number) => {
+  return request<SongDetailRes>({
+    url: 'https://zyxcl.xyz/music/api/song/detail',
+    data: {
+      ids
+    }
+  })
+}
+// 歌词
+export const lyricApi = (id: string | number) => {
+  return request<LyricRes>({
+    url: 'https://zyxcl.xyz/music/api/lyric',
+    data: {
+      id
+    }
+  })
+}
+// 音乐url
+export const songUrlApi = (id: string | number) => {
+  return request<SongUrlRes>({
+    url: 'https://zyxcl.xyz/music/api/song/url',
+    data: {
+      id
+    }
+  })
 }

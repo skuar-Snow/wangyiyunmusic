@@ -237,6 +237,10 @@ export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 73afe88b245afd102a2583c56ec0742492f07f45
 }
 
 // 热门搜素接口
@@ -295,4 +299,118 @@ export interface searchListInerartists{
 	id: number,
 	img1v1Url: string,
 	name: string
+<<<<<<< HEAD
+=======
+}
+
+
+
+// 歌曲详情
+export interface SongDetailRes {
+  code: number;
+  songs: Song[];
+}
+// 歌词
+export interface LyricRes {
+  lrc: {
+    lyric: string;
+  }
+}
+// 音乐url
+export interface SongUrl {
+  url: string;
+  time: number;
+  id: number;
+}
+export interface SongUrlRes {
+  code: number;
+  data: SongUrl[];
+}
+
+
+
+
+
+
+
+
+
+
+//banners 接口
+export interface BannerNewItem {
+    bannerId: string
+    pic: string
+    [key: string]: any
+}
+
+// 榜单 
+export interface SongListItem {
+    uiElement: {
+        image: {
+            imageUrl: string
+        }
+        subTitle: {
+            title: string
+        }
+    }
+    resourceExtInfo:{
+        song: {
+            al: {
+                name: string
+                id: string
+                picUrl: string
+                pic: number
+            }
+            ar: {
+                name: string
+                id: number
+            }[]
+        }
+        
+    }
+    resourceId:string
+}
+
+// 推荐歌单接口
+export interface RecommendedPlay {
+    creativeId?: string
+    uiElement?: {
+        image:{
+            imageUrl: string
+        }
+        mainTitle: {
+            title: string
+        }
+    }
+    resources?: SongListItem[]
+
+    [key: string]: any
+}
+
+export interface HomePageDateItem {
+    uiElement?: {
+        subTitle?: {
+            title?: string
+        }
+    }  // 标题
+    creatives?:RecommendedPlay[]    // 推荐歌单
+    extInfo?: {  // banner轮播图
+        banners: BannerNewItem[]
+    }   
+    [key: string]: any
+}
+
+export interface HomePageDate {
+    blocks: HomePageDateItem []
+    [key: string]: any
+}
+
+
+export interface HomePage {
+    data:{
+        code: number
+        data: HomePageDate
+        [key: string]: any
+    }
+>>>>>>> 73afe88b245afd102a2583c56ec0742492f07f45
 }
