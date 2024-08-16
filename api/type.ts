@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c
 // 轮播图
 export interface BannerItem {
 	imageUrl:string;
@@ -46,10 +42,7 @@ export interface GoodMusicRes {
 	code:number;
 	data:GoodMusicItem[]
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c
 // 歌单详情接口
  export interface Song {
   name: string;
@@ -219,9 +212,6 @@ export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
-<<<<<<< HEAD
-}
-=======
 }
 
 // 热门搜素接口
@@ -281,4 +271,3 @@ export interface searchListInerartists{
 	img1v1Url: string,
 	name: string
 }
->>>>>>> a1bb768b3811159f4c36866666691ad0b31f4d8c
