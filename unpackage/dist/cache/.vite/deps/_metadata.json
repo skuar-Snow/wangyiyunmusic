@@ -1,9 +1,16 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "hash": "415f2fcb",
   "configHash": "1510cc72",
   "lockfileHash": "31f610c4",
   "browserHash": "27b01418",
+=======
+  "hash": "04f54346",
+  "configHash": "eb35237e",
+  "lockfileHash": "ae13c8a7",
+  "browserHash": "360d644d",
+>>>>>>> 062c4d9fd47def1b693aa289042bf0de60e6e00f
 =======
   "hash": "a94e6c49",
   "configHash": "c15f31ec",

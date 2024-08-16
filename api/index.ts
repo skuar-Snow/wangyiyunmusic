@@ -1,5 +1,9 @@
 import { request } from './request'
 
+
+import type{ BannerRes, BallRes, PersonalizedRes, GoodMusicRes }from './type.ts'
+
+
 import type { RankingRes  } from './type'
 
 import {
@@ -12,7 +16,9 @@ import {
 } from './type'
 
 
+
 import type {hotSearchLisr,SearchsuggestRes,searchList} from "./type"
+
 
 
 
@@ -23,21 +29,18 @@ export const homepageApi = () => {
 }
 // 轮播图
 export const bannerApi = () => {
-  return request({
+  return request<BannerRes>({
     url: 'https://zyxcl.xyz/music/api/banner'
   })
 }
 
 // https://zyxcl.xyz/music/api/homepage/dragon/ball
 export const ballApi = () => {
-  return request({
+  return request<BallRes>({
     url: 'https://zyxcl.xyz/music/api/homepage/dragon/ball'
   })
 }
 
-
-
-// 
 // playlist/track/all?id=24381616
 export const playlistApi = (id: number)=>{
 	return request({
@@ -47,6 +50,7 @@ export const playlistApi = (id: number)=>{
 		}
 	})
 }
+
 
 
 // 歌单评论
@@ -82,6 +86,14 @@ export const playlistDetailApi = (id: string) => {
 export const SearchListApi = ()=>{
 	return request<hotSearchLisr>({
 		url:"https://zyxcl.xyz/music/api/search/hot/detail"
+
+// 随机歌单
+export const goodMusicApi = () => {
+	return request<GoodMusicRes>({
+		url: `http://121.89.213.194:5001/homepage/block/page`,
+	})
+}
+
 
 // /toplist
 export const toplistApi = () => {
