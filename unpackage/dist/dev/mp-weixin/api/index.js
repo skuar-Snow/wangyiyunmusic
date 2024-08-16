@@ -1,42 +1,23 @@
 "use strict";
-const common_vendor = require("../common/vendor.js");
-const request = ({
-  url,
-  method = "GET",
-  data = {}
-}) => {
-  return new Promise((resolve, reject) => {
-    common_vendor.index.request({
-      url,
-      method,
-      data,
-      success: (res) => {
-        resolve(res);
-      },
-      fail: (e) => {
-        reject(e);
-      }
-    });
-  });
-};
+const api_request = require("./request.js");
 const bannerApi = () => {
-  return request({
+  return api_request.request({
     url: "https://zyxcl.xyz/music/api/banner"
   });
 };
 const ballApi = () => {
-  return request({
+  return api_request.request({
     url: "https://zyxcl.xyz/music/api/homepage/dragon/ball"
   });
 };
 const personalizedApi = () => {
-  return request({
+  return api_request.request({
     url: "https://zyxcl.xyz/music/api/personalized"
   });
 };
-const playlistApi = (id) => {
-  return request({
-    url: `https://zyxcl.xyz/music/api/playlist/track/all?id=${id}`,
+const playlistDetailApi = (id) => {
+  return api_request.request({
+    url: "https://zyxcl.xyz/music/api/playlist/detail",
     data: {
       id
     }
@@ -45,4 +26,4 @@ const playlistApi = (id) => {
 exports.ballApi = ballApi;
 exports.bannerApi = bannerApi;
 exports.personalizedApi = personalizedApi;
-exports.playlistApi = playlistApi;
+exports.playlistDetailApi = playlistDetailApi;
