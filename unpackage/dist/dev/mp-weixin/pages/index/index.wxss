@@ -50,6 +50,10 @@
 .ball-wrap {
   width: 100%;
   display: flex;
+  overflow: auto;
+}
+.ball-wrap::-webkit-scrollbar {
+  display: none;
 }
 .ball-wrap .ball {
   width: 20%;
@@ -58,14 +62,18 @@
   font-size: 12px;
 }
 .ball-wrap .ball image {
-  width: 50%;
-  height: 40px;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
   background: #c84341;
 }
 .list-wrap {
   width: 100%;
   display: flex;
+  overflow: auto;
+}
+.list-wrap::-webkit-scrollbar {
+  display: none;
 }
 .list-wrap .song {
   width: 250rpx;
@@ -82,22 +90,34 @@
 }
 .changeMusic {
   display: flex;
-  height: 300rpx;
+  min-width: 90%;
+  height: 450rpx;
   padding: 20rpx;
+  overflow: auto !important;
+}
+.changeMusic::-webkit-scrollbar {
+  display: none !important;
 }
 .changeMusic .outMusic {
-  width: 2000rpx;
-  height: 100rpx;
-  overflow-x: scroll;
+  width: 600rpx;
+  height: 450rpx;
   display: flex;
   box-sizing: border-box;
+  flex-direction: column;
 }
 .changeMusic .outMusic > view {
-  width: 80%;
-  height: 100rpx;
+  width: 600rpx;
+  height: 150rpx;
   display: flex;
-  justify-content: flex-start;
   font-size: 30rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.changeMusic .outMusic > view .leftall {
+  display: flex;
+}
+.changeMusic .outMusic > view .icon {
+  margin-right: 80rpx;
 }
 .changeMusic .outMusic > view .left {
   display: flex;
@@ -107,9 +127,9 @@
   font-size: 25rpx;
   color: #999;
 }
-.changeMusic .outMusic > view img {
-  width: 80rpx;
-  height: 80rpx;
+.changeMusic .outMusic > view image {
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 10rpx;
 }
 .changeMusic .outMusic > view text {
@@ -119,4 +139,39 @@
   display: flex;
   align-items: center;
   font-size: 25rpx;
+}
+.radarAll {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20rpx;
+  overflow: auto;
+}
+.radarAll::-webkit-scrollbar {
+  display: none;
+}
+.radarAll .radarItem {
+  width: 500rpx;
+  height: 300rpx;
+  flex-direction: column;
+  font-size: 25rpx;
+}
+.radarAll .radarItem::-webkit-scrollbar {
+  display: none;
+}
+.radarAll .radarItem .textover {
+  display: -webkit-box !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  height: 70rpx;
+}
+.radarAll .radarItem image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+}
+.radarAll .radarItem image:not(last-child) {
+  margin-right: 20rpx;
 }

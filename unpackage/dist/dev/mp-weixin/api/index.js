@@ -1,8 +1,8 @@
 "use strict";
 const api_request = require("./request.js");
-const homepageApi = () => {
+const bannerApi = () => {
   return api_request.request({
-    url: "https://zyxcl.xyz/music/api/homepage/block/page"
+    url: "https://zyxcl.xyz/music/api/banner"
   });
 };
 const ballApi = () => {
@@ -18,12 +18,22 @@ const commentPlaylistApi = (id) => {
     }
   });
 };
+const personalizedApi = () => {
+  return api_request.request({
+    url: "https://zyxcl.xyz/music/api/personalized"
+  });
+};
 const playlistDetailApi = (id) => {
   return api_request.request({
     url: "https://zyxcl.xyz/music/api/playlist/detail",
     data: {
       id
     }
+  });
+};
+const goodMusicApi = () => {
+  return api_request.request({
+    url: `http://121.89.213.194:5001/homepage/block/page`
   });
 };
 const toplistApi = () => {
@@ -86,10 +96,12 @@ exports.SearchListApi = SearchListApi;
 exports.SearchsuggestApi = SearchsuggestApi;
 exports.SearchtApi = SearchtApi;
 exports.ballApi = ballApi;
+exports.bannerApi = bannerApi;
 exports.commentPlaylistApi = commentPlaylistApi;
-exports.homepageApi = homepageApi;
+exports.goodMusicApi = goodMusicApi;
 exports.lyricApi = lyricApi;
 exports.officialListApi = officialListApi;
+exports.personalizedApi = personalizedApi;
 exports.playlistDetailApi = playlistDetailApi;
 exports.songDetailApi = songDetailApi;
 exports.songUrlApi = songUrlApi;

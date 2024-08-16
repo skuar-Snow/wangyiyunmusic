@@ -34,47 +34,30 @@ export interface PersonalizedRes {
 }
 
 //随机歌单
-// interface mm {
-// 	uiElement: {
-// 		image: {
-// 			imageUrl:string
-// 		}
-// 	}
-//   resourceExtInfo: {
-// 		artists:{name:string}[]
-// 	}
-// }
-// interface bb {
-// 	resources:mm[]
 
-<<<<<<< HEAD
-// }
-// interface cc {
-// 	creatives:bb[]
-// 	uiElement:{
-// 		subTitle:{
-// 			title:string
-// 		}
-// 	}
-// }
-// export interface GoodMusicItem {
-// 	blocks:cc[];
-// 	first:string[]
-// }
-
-// export interface GoodMusicRes {
-// 	code:number;
-// 	data:{
-// 	blocks:cc[];
-// 	first:string[]
-//   }
-// }
-=======
 export interface GoodMusicRes {
 	code:number;
-	data:GoodMusicItem[]
+	data?:{
+	blocks?: {
+	    creatives?:{
+				resources?: {
+	        uiElement?: {
+		        image: {
+			        imageUrl:string
+		        }
+	        }
+        resourceExtInfo?: {
+		      artists?:{name:string}[]
+	      }
+      }[]}[]
+	   uiElement?:{
+		   subTitle:{
+			   title:string
+		   }
+	    }
+    }[];
+  }
 }
->>>>>>> master
 
 // 歌单详情接口
  export interface Song {
@@ -244,13 +227,6 @@ export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 73afe88b245afd102a2583c56ec0742492f07f45
-=======
->>>>>>> master
 }
 
 // 热门搜素接口
@@ -309,9 +285,6 @@ export interface searchListInerartists{
 	id: number,
 	img1v1Url: string,
 	name: string
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 }
 
 
@@ -423,7 +396,4 @@ export interface HomePage {
         data: HomePageDate
         [key: string]: any
     }
->>>>>>> 73afe88b245afd102a2583c56ec0742492f07f45
-=======
->>>>>>> master
 }
