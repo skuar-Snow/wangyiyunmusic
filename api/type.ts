@@ -4,34 +4,41 @@ export interface BannerItem {
 	imageUrl:string;
 	targetId:number
 }
+
 export interface BannerRes  {
 	banners:BannerItem[]
 	code:number
 }
+
 //每日推荐图标
 export interface BallItem {
 	name:string,
 	iconUrl:string,
 	id:number
 }
+
 export interface BallRes {
 	data:BallItem[],
 	code:number
 }
+
 //推荐歌单
 export interface PersonalizedItem {
 	id:number;
 	name:string;
 	picUrl:string
 }
+
 export interface PersonalizedRes {
 	result:PersonalizedItem[]
 	code: number
 }
+
 //随机歌单
 export interface GoodMusicItem {
 	blocks:{};
 }
+
 export interface GoodMusicRes {
 	code:number;
 	data:GoodMusicItem[]
@@ -48,6 +55,7 @@ export interface GoodMusicRes {
     picUrl: string;
   }
 }
+
 // 排行榜接口
 export interface RankingItem {
 	ToplistType?: string;
@@ -72,6 +80,7 @@ export interface RankingRes {
 	code: number;
 	list: RankingItem[];
 }
+
 // 热门搜素接口
 export interface hotSearchLisr {
 	code:number,
@@ -143,6 +152,7 @@ export interface  PersonalizedItem{
 	trackCount:number;
 	trackNumberUpdateTime: number;
 } 
+
 export interface PersonalizedRes{
 	code:number;
 	result:PersonalizedItem[]
@@ -159,6 +169,7 @@ export interface Song{
 		picUrl:string;
 	}
 }
+
 export interface PlaylistDetail{
 	description:string;
 	coverImgUrl:string;
@@ -197,14 +208,12 @@ export interface CommentItem {
     avatarUrl: string;
   }
 }
+
 export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
 }
-
-
-
 
 // 热门搜素接口
 export interface hotSearchLisr {
@@ -263,7 +272,3 @@ export interface searchListInerartists{
 	img1v1Url: string,
 	name: string
 }
-
-
-
-
