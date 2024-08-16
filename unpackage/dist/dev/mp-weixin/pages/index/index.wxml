@@ -1,1 +1,37 @@
-<view class="header"><uni-icons wx:if="{{a}}" u-i="0341a455-0" bind:__l="__l" u-p="{{a}}"></uni-icons><view class="goSearch" bindtap="{{b}}">搜索</view></view><view class="swiper-wrap"><swiper indicator-dots><swiper-item wx:for="{{c}}" wx:for-item="item" wx:key="b"><image src="{{item.a}}" mode="widthFix"></image></swiper-item></swiper></view><scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction:row"><view class="ball-wrap"><view wx:for="{{d}}" wx:for-item="item" wx:key="c" class="ball"><image src="{{item.a}}" mode="widthFix"></image><view class="">{{item.b}}</view></view></view></scroll-view><uni-section wx:if="{{e}}" u-i="0341a455-1" bind:__l="__l" u-p="{{e}}"></uni-section><scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction:row"><view class="list-wrap"><view wx:for="{{f}}" wx:for-item="item" wx:key="c" class="song" bindtap="{{item.d}}"><view class="pic"><image src="{{item.a}}" mode="widthFix"></image></view><view class="">{{item.b}}</view></view></view></scroll-view><uni-section wx:if="{{g}}" u-i="0341a455-2" bind:__l="__l" u-p="{{g}}"></uni-section><view class=""><swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}"><swiper-item><view class="swiper-item"></view></swiper-item><swiper-item><view class="swiper-item"></view></swiper-item></swiper></view>
+<view class="header">
+  <uni-icons wx:if="{{a}}" u-i="3aad94d3-0" bind:__l="__l" u-p="{{a}}"></uni-icons>
+  <view class="goSearch" bindtap="{{c}}">
+    <uni-icons wx:if="{{b}}" u-i="3aad94d3-1" bind:__l="__l" u-p="{{b}}"></uni-icons><text>搜索</text>
+  </view>
+</view>
+<view class="swiper-wrap">
+  <swiper indicator-dots>
+    <swiper-item wx:for="{{d}}" wx:for-item="item" wx:key="b">
+      <image src="{{item.a}}" mode="widthFix"></image>
+    </swiper-item>
+  </swiper>
+</view>
+<scroll-view scroll-x enable-flex show-scrollbar="true" style="flex-direction:row">
+  <view class="ball-wrap">
+    <view wx:for="{{e}}" wx:for-item="item" wx:key="c" class="ball" bindtap="{{item.d}}">
+      <image src="{{item.a}}" mode="widthFix"></image>
+      <view class="">{{item.b}}</view>
+    </view>
+  </view>
+</scroll-view>
+<uni-section wx:if="{{f}}" u-i="3aad94d3-2" bind:__l="__l" u-p="{{f}}"></uni-section>
+<scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction:row">
+  <view class="list-wrap">
+    <view wx:for="{{g}}" wx:for-item="item" wx:key="c" class="song" bindtap="{{item.d}}">
+      <image src="{{item.a}}" mode="widthFix"></image> {{item.b}}
+    </view>
+  </view>
+</scroll-view>
+<uni-section wx:if="{{i}}" u-s="{{['d']}}" u-i="3aad94d3-3" bind:__l="__l" u-p="{{i}}">{{h}}</uni-section>
+<scroll-view class="changeMusic" scroll-x show-scrollbar="false">
+  <view wx:for="{{j}}" wx:for-item="item" class="outMusic">
+    <view wx:for="{{item.a}}" wx:for-item="v" class="">
+      <image src="{{v.a}}" alt="" /><text>{{v.b}}</text>
+    </view>
+  </view>
+</scroll-view>

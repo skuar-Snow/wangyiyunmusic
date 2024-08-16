@@ -6,6 +6,7 @@ if (!Math) {
   "./pages/mine/mine.js";
   "./pages/search/search.js";
   "./pages/songlist/songlist.js";
+  "./pages/rankinglist/rankinglist.js";
 }
 const _sfc_main = {
   onLaunch: function() {

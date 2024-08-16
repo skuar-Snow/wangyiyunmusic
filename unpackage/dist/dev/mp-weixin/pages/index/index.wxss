@@ -24,14 +24,14 @@
 /* 透明度 */
 /* 文章场景相关 */
 .header {
-  padding: 20rpx;
   display: flex;
   width: 100%;
 }
 .header .goSearch {
   margin-left: 40rpx;
   width: 600rpx;
-  background: #dddddd;
+  background-color: #eeeeee;
+  color: #aaa;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,16 +74,36 @@
   padding: 20rpx 0;
   font-size: 12px;
 }
-.list-wrap .song .pic {
-  width: 250rpx;
-  height: 250rpx;
-  overflow: hidden;
-  border-radius: 20rpx;
-}
 .list-wrap .song image {
   width: 250rpx;
   height: 250rpx;
 }
 .uni-section-header__decoration line {
   background-color: #c84341 !important;
+}
+.changeMusic {
+  display: flex;
+  height: 300rpx;
+  padding: 20rpx;
+}
+.changeMusic .outMusic {
+  width: 2000rpx;
+  height: 100rpx;
+  overflow-x: scroll;
+  display: flex;
+  box-sizing: border-box;
+}
+.changeMusic .outMusic > view {
+  width: 80%;
+  height: 100rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+.changeMusic .outMusic > view img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+}
+.changeMusic .outMusic > view text {
+  text-indent: 20rpx;
 }

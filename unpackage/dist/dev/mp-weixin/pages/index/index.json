@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "主页",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-icons": "../../uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "uni-section": "../../uni_modules/uni-section/components/uni-section/uni-section"
+  }
 }
