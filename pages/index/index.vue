@@ -93,7 +93,6 @@ const goDetail = (id: string) => {
 		</uni-section>
 	  <scroll-view class="changeMusic" scroll-x show-scrollbar=false>
 	  	<view class="outMusic" v-for="item in songSheetHost" >
-			{{item.resource?.uiElement}}
 	  	 <view class=""  v-for="v in item.resources"> 
 			 <img :src="v.uiElement.image.imageUrl" alt="" />
 	  	  	<text>{{v.resourceExtInfo.song.al.name}}</text>
