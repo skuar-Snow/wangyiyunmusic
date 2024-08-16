@@ -1,5 +1,44 @@
+
+// 轮播图
+export interface BannerItem {
+	imageUrl:string;
+	targetId:number
+}
+export interface BannerRes  {
+	banners:BannerItem[]
+	code:number
+}
+//每日推荐图标
+export interface BallItem {
+	name:string,
+	iconUrl:string,
+	id:number
+}
+export interface BallRes {
+	data:BallItem[],
+	code:number
+}
+//推荐歌单
+export interface PersonalizedItem {
+	id:number;
+	name:string;
+	picUrl:string
+}
+export interface PersonalizedRes {
+	result:PersonalizedItem[]
+	code: number
+}
+//随机歌单
+export interface GoodMusicItem {
+	blocks:{};
+}
+export interface GoodMusicRes {
+	code:number;
+	data:GoodMusicItem[]
+}
+
 // 歌单详情接口
-export interface Song {
+ export interface Song {
   name: string;
   id: number;
   ar: { id: number; name: string; }[];
@@ -90,9 +129,8 @@ export interface searchListInerartists{
 	id: number,
 	img1v1Url: string,
 	name: string
-<<<<<<< HEAD
-=======
 }
+
 
 
 // /personalized
@@ -142,6 +180,7 @@ export interface PlaylistDetailRes{
 	code:number;
 	playlist:PlaylistDetail;
 }
+
 // 歌单评论
 export interface CommentItem {
   commentId: number;
@@ -162,5 +201,69 @@ export interface CommentPlaylistRes{
 	comments: CommentItem[];
 	  hotComments: CommentItem[];
 	  total: number;
->>>>>>> 0f525d6578fe7da1c96b0f35c2c812ad0ed75d74
 }
+
+
+
+
+// 热门搜素接口
+export interface hotSearchLisr {
+	code:number,
+	data:hotInnerList[],
+	message:string
+}
+
+export interface hotInnerList {
+	iconUrl:string,
+	score:number,
+	searchWord:string
+}
+
+
+//搜索建议接口
+export interface SearchsuggestRes{
+	code: number,
+	result : innerAllMatch
+}
+
+export interface innerAllMatch{
+	allMatch:searchsuggestIner[]
+}
+
+export interface searchsuggestIner{
+	keyword: string
+}
+
+
+//搜索接口
+export interface searchList{
+	code: number,
+	result:innersearch
+}
+
+export interface innersearch{
+	hasMore: boolean,
+	songCount: number,
+	songs:searchListIner[]
+}
+
+export interface searchListIner{
+	name: string,
+	album:searchListInerAlbum
+}
+
+export interface searchListInerAlbum{
+	id: number,
+	name: string,
+	artists: searchListInerartists[]
+}
+
+export interface searchListInerartists{
+	id: number,
+	img1v1Url: string,
+	name: string
+}
+
+
+
+
