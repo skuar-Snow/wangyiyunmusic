@@ -1,6 +1,5 @@
 import { request } from './request'
 
-
 import type{ BannerRes, 
 			 BallRes, 
 			 PersonalizedRes, 
@@ -10,15 +9,11 @@ import type{ BannerRes,
 			 CommentPlaylistRes,
 			 SearchsuggestRes,
 			 hotSearchLisr,
-			 searchList,
-			 SongDetailRes,
-			 LyricRes,
-			 SongUrlRes,
-			 HomePage
+			 searchList
 }from './type.ts'
 
 export const homepageApi = () => {
-  return request<HomePage>({
+  return request({
     url: 'https://zyxcl.xyz/music/api/homepage/block/page'
   })
 }
@@ -38,7 +33,7 @@ export const ballApi = () => {
 }
 
 // playlist/track/all?id=24381616
-export const playlistApi = (id: string)=>{
+export const playlistApi = (id: number)=>{
 	return request({
 		url: `https://zyxcl.xyz/music/api/playlist/track/all`,
 		data:{
@@ -46,8 +41,6 @@ export const playlistApi = (id: string)=>{
 		}
 	})
 }
-
-
 
 // 歌单评论
 export const commentPlaylistApi=(id:string)=>{
@@ -100,8 +93,6 @@ export const officialListApi = (id: string) => {
 	})
 }
 
-
-
 //热门搜索列表
 // https://zyxcl.xyz/music/api//search/hot
 export const SearchListApi = ()=>{
@@ -120,6 +111,7 @@ export const SearchtApi = (keywords :string)=>{
 		}
 	})
 }
+
 //搜索建议接口
 // /search/suggest?keywords=海阔天空&type=mobile
 export const SearchsuggestApi = (keywords :string,type: string)=>{
@@ -130,32 +122,4 @@ export const SearchsuggestApi = (keywords :string,type: string)=>{
 			type
 		}
 	})
-}
-
-// 歌曲详情
-export const songDetailApi = (ids: string | number) => {
-  return request<SongDetailRes>({
-    url: 'https://zyxcl.xyz/music/api/song/detail',
-    data: {
-      ids
-    }
-  })
-}
-// 歌词
-export const lyricApi = (id: string | number) => {
-  return request<LyricRes>({
-    url: 'https://zyxcl.xyz/music/api/lyric',
-    data: {
-      id
-    }
-  })
-}
-// 音乐url
-export const songUrlApi = (id: string | number) => {
-  return request<SongUrlRes>({
-    url: 'https://zyxcl.xyz/music/api/song/url',
-    data: {
-      id
-    }
-  })
 }
