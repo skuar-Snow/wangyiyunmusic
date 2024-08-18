@@ -64,3 +64,28 @@
   height: 230rpx;
   border-bottom: 1px solid #ccc;
 }
+.historyList.data-v-c10c040c {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx;
+}
+.historyList .item.data-v-c10c040c {
+  padding: 0 20rpx;
+  height: 40rpx;
+  border-color: #ddd;
+  background-color: #ddd;
+  margin-right: 0.625rem;
+  color: #333;
+  font-size: 12px;
+  border-radius: 15px !important;
+  line-height: 40rpx;
+  margin-bottom: 10rpx;
+}
+.topTi.data-v-c10c040c {
+  display: flex;
+  justify-content: space-between;
+}
+.topTi .trash.data-v-c10c040c {
+  font-size: 28rpx;
+  margin-right: 10rpx;
+}
