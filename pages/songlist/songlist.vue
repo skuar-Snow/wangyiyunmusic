@@ -1,120 +1,134 @@
-
 <script setup lang="ts">
-import {ref , computed} from "vue"
+import { ref, computed } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { playlistDetailApi, commentPlaylistApi } from '../../api'
-import type { PlaylistDetail, CommentItem } from '../../api/type'
-import {onLoad} from '@dcloudio/uni-app'
-const popup=ref<any>(null)
-const playlistDetail=ref<PlaylistDetail>({} as PlaylistDetail)
-const hotComments=ref<CommentItem[]>([])
-const comments=ref<CommentItem[]>([])
+import type { PlaylistDetail, CommentItem, Song } from '../../api/type'
+import { usePlayerStore } from '../../stores/player'
+  
+const playerStore = usePlayerStore()
+const popup = ref<any>(null)
+const playlistDetail = ref<PlaylistDetail>({} as PlaylistDetail)  
+const hotComments = ref<CommentItem[]>([])
+const comments = ref<CommentItem[]>([])
+
 // 详情接口
-const getDetail=async (id : string)=>{
-	const res=await playlistDetailApi(id)
-	playlistDetail.value=res.data.playlist
-	console.log(playlistDetail.value)
+const getDetail = async (id: string) => {
+  const res = await playlistDetailApi(id)
+  playlistDetail.value = res.data.playlist
 }
 // 评论接口
-const getComment=async(id:string)=>{
-	const res=await commentPlaylistApi(id)
-	hotComments.value=res.data.hotComments
-	comments.value=res.data.comments
-	console.log(comments)
-	
+const getComment = async (id: string) => {
+  const res = await commentPlaylistApi(id)
+  comments.value = res.data.comments
+  hotComments.value = res.data.hotComments
 }
-onLoad(async(options)=>{
-	getDetail(options?.id)
-	getComment(options?.id)
+
+onLoad(async (options) => {
+  getDetail(options?.id)
+  getComment(options?.id)
 })
-const open=()=>{
-	popup.value.open('bottom')
-}
 
-const goPlayer = (id: number) =>{
-	uni.navigateTo({
-		url: `/pages/player/player?id=${id}`
-	})
+const open = () => {
+  popup.value.open('bottom')
 }
-
+const goPlayer = (item: Song) => {
+  // 把当前歌曲添加到store中
+  playerStore.pushSong(item)
+  uni.navigateTo({
+    url: `/pages/player/player?id=${item.id}`
+  })
+}
+const playAll = () => {
+  playerStore.pushAll(playlistDetail.value.tracks)
+  const id = playlistDetail.value.tracks[0].id
+  uni.navigateTo({
+    url: `/pages/player/player?id=${id}`
+  })
+}
 </script>
 
 <template>
-	<view class="header-wrap">
-	    <view class="header">
-	      <image class="coverImg" :src="playlistDetail.coverImgUrl" mode="widthFix"></image>
-	      <view class="info">
-	        <view class="title">
-	          {{playlistDetail.name}}
-	        </view>
-	        <view class="creator">
-	          <image class="avatar" :src="playlistDetail.creator?.avatarUrl" mode="widthFix"></image>
-	          <view class="nickname">
-	            {{playlistDetail.creator?.nickname}}
-	          </view>
-	        </view>
-	      </view>
-	    </view>
-		<view class="desc">
-			{{playlistDetail.description}}
-		</view>
-		<view class="bg">
-			<image :src="playlistDetail.coverImgUrl" mode="widthFix"></image>
-			<view class="mask"></view>
-		</view>
-		<view class="btns">
-			<button size="mini">分享{{playlistDetail.shareCount}}</button>
-			<button size="mini" @click="open">评论{{playlistDetail.commentCount}}</button>
-			<button size="mini">收藏{{playlistDetail.subscribedCount}}</button>
-		</view>
-	</view>
-	<view class="all">▶播放全部({{playlistDetail.tracks?.length}})</view>
-	<view class="songlist">
-		<uni-list>
-			<uni-list-item
-			v-for="(item,index) in playlistDetail.tracks"
-			:key="item.id"
-			:title="item.name"
-			link
-			clickable
-			:note="item.ar.map(v => v.name).join('/')"
-			 @click="goPlayer(item.id)"
-			>
-				<template v-slot:header>
-					<view class="no">{{index+1}}</view>
-				</template>
-			</uni-list-item>
-		</uni-list>
-	</view>
-	<uni-popup ref="popup" border-radius="10px 10px 0 0">
-		<scroll-view scroll-y class="popup-list" >
-		     <uni-section title="热门评论" type="line">
-				 <uni-list>
-					 <uni-list-item
-					 v-for="item in hotComments"
-					 :key="item.commentId"
-					 :title="item.user.nickname"
-					 :note="item.content"
-					 :thumb="item.user.avatarUrl"
-					 >
-					 </uni-list-item>
-				 </uni-list>
-			 </uni-section>
-			 <uni-section title="最新评论" type="line">
-			 				 <uni-list>
-			 					 <uni-list-item
-			 					 v-for="item in comments"
-			 					 :key="item.commentId"
-			 					 :title="item.user.nickname"
-			 					 :note="item.content"
-			 					 :thumb="item.user.avatarUrl"
-			 					 >
-			 					 </uni-list-item>
-			 				 </uni-list>
-			 </uni-section>
-		</scroll-view>
-	</uni-popup>
-</template>
+  <view class="header-wrap">
+    <view class="header">
+      <image class="coverImg" :src="playlistDetail.coverImgUrl" mode="widthFix"></image>
+      <view class="info">
+        <view class="title">
+          {{playlistDetail.name}}
+        </view>
+        <view class="creator">
+          <image class="avatar" :src="playlistDetail.creator?.avatarUrl" mode="widthFix"></image>
+          <view class="nickname">
+            {{playlistDetail.creator?.nickname}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="desc">
+      {{playlistDetail.description}}
+    </view>
+    <view class="bg">
+      <image :src="playlistDetail.coverImgUrl" mode="widthFix"></image>
+      <view class="mask"></view>
+    </view>
+    <view class="btns">
+    	<button size="mini">分享{{playlistDetail.shareCount}}</button>
+    	<button size="mini" @click="open">评论{{playlistDetail.commentCount}}</button>
+    	<button size="mini">收藏{{playlistDetail.subscribedCount}}</button>
+    </view>
+  </view>
+  
+  <view class="songlist">
+    <uni-list>
+      <uni-list-item title="播放全部" link clickable @click="playAll"></uni-list-item>
+    	<uni-list-item
+        v-for="(item, index) in playlistDetail.tracks"
+        :key="item.id"
+        :title="item.name"
+        :note="item.ar.map(v => v.name).join('/')"
+        link
+        clickable
+        :rightText="playerStore.activeIndex === index ? '正在播放' : ''"
+        @click="goPlayer(item)"
+      >
+      <!-- 自定义 header -->
+        <template v-slot:header>
+          <view class="no">{{index + 1}}</view>
+        </template>
+      </uni-list-item>
+    </uni-list>
+  </view>
 
+  <uni-popup ref="popup" border-radius="10px 10px 0 0">
+    <scroll-view class="popup-list" scroll-y>
+      <uni-section title="热门评论" type="line">
+        <uni-list>
+        	<uni-list-item
+            v-for="item in hotComments"
+            :key="item.commentId"
+            :title="item.user.nickname"
+            :note="item.content"
+            :thumb="item.user.avatarUrl"
+          >
+          </uni-list-item>
+        </uni-list>
+      </uni-section>
+      <uni-section title="最新评论" type="line">
+        <uni-list>
+        	<uni-list-item
+            v-for="item in comments"
+            :key="item.commentId"
+            :title="item.user.nickname"
+            :note="item.content"
+            :thumb="item.user.avatarUrl"
+          >
+          </uni-list-item>
+        </uni-list>
+      </uni-section>
+      
+    </scroll-view>
+  </uni-popup>
+
+</template>
 
 <style lang="scss" scoped>
 .header-wrap {
@@ -189,10 +203,5 @@ const goPlayer = (id: number) =>{
 .btns{
 	display: flex;
 	justify-content: space-around;
-}
-.all{
-	height: 80rpx;
-	border-bottom: 1px solid #ddd;
-	line-height: 80rpx;
 }
 </style>

@@ -95,10 +95,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           type: "line"
         }),
         i: common_vendor.f(songSheetHost.value, (item, k0, i0) => {
-          var _a;
           return {
-            a: common_vendor.t((_a = item.resource) == null ? void 0 : _a.uiElement),
-            b: common_vendor.f(item.resources, (v, k1, i1) => {
+            a: common_vendor.f(item.resources, (v, k1, i1) => {
               return {
                 a: v.uiElement.image.imageUrl,
                 b: common_vendor.t(v.resourceExtInfo.song.name),

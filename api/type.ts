@@ -273,39 +273,6 @@ export interface searchListInerartists{
 	name: string
 }
 
-
-
-// 歌曲详情
-export interface SongDetailRes {
-  code: number;
-  songs: Song[];
-}
-// 歌词
-export interface LyricRes {
-  lrc: {
-    lyric: string;
-  }
-}
-// 音乐url
-export interface SongUrl {
-  url: string;
-  time: number;
-  id: number;
-}
-export interface SongUrlRes {
-  code: number;
-  data: SongUrl[];
-}
-
-
-
-
-
-
-
-
-
-
 //banners 接口
 export interface BannerNewItem {
     bannerId: string
@@ -382,4 +349,29 @@ export interface HomePage {
         data: HomePageDate
         [key: string]: any
     }
+}
+
+
+
+
+// 歌曲详情
+export interface SongDetailRes {
+  code: number;
+  songs: Song[];
+}
+// 歌词
+export interface LyricRes {
+  lrc: {
+    lyric: string;
+  }
+}
+// 音乐url
+export interface SongUrl {
+  url: string;
+  time: number;
+  id: number;
+}
+export interface SongUrlRes {
+  code: number;
+  data: SongUrl[];
 }

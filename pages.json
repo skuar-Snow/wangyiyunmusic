@@ -36,12 +36,14 @@
 				"navigationBarTextStyle": "white"
 			}
 		},
-		{
-			"path" : "pages/player/player",
-			"style" : 
-			{
-			}
-		}
+		 {
+		      "path" : "pages/player/player",
+		      "style" : 
+		      {
+		        "navigationBarTitleText" : "",
+		        "enablePullDownRefresh" : false
+		      }
+		    }
 	],
 	"tabBar": {
 		"color": "#333333",

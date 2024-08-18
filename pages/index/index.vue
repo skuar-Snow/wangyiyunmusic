@@ -89,25 +89,44 @@ const goDetail = (id: string) => {
 	    </view>
 	  </scroll-view>
 	  <!-- 猜你喜欢的华语好歌 -->
-	  <uni-section :title="songSheetHostTitle" type="line">
+	<!--  <uni-section :title="songSheetHostTitle" type="line">
 		</uni-section>
-	  <!-- 随机歌曲 -->
-	  <view class="random">
-	  </view>
 	  <scroll-view class="changeMusic" scroll-x show-scrollbar=false>
 	  	<view class="outMusic" v-for="item in songSheetHost" >
-			{{item.resource?.uiElement}}
 	  	 <view class=""  v-for="v in item.resources"> 
-			    	<img :src="v.uiElement.image.imageUrl" alt="" />
-			    <view class="left">
-			    	<text>{{v.resourceExtInfo.song.name}}</text>
-			    	<text>{{v.resourceExtInfo.artists[0].name}}</text>
-			    </view>
-			 <img :src="v.uiElement.image.imageUrl" alt="" />
+			 <image :src="v.uiElement.image.imageUrl" alt="" />
 	  	  	<text>{{v.resourceExtInfo.song.al.name}}</text>
+					
 	  	 </view>
 	  	</view>
-	  </scroll-view>
+	  </scroll-view> -->
+	  <uni-section :title="songSheetHostTitle" type="line">
+	  	</uni-section>
+	   <scroll-view class="scrollImg" scroll-x show-scrollbar=false>
+	  	  	<view class="changeMusic">
+	  	  		<view class="outMusic" v-for="item in songSheetHost" show-scrollbar=false>
+	  	  		 <view v-for="v in item.resources"> 
+	  	  		   <view class="leftall">
+	  	  		   	  <image :src="v.uiElement.image.imageUrl" alt="" />
+	  	  		   	  <view class="left">
+	  	  		   		  <text>{{v.resourceExtInfo.song.al.name}}</text>
+	  	  		   	  </view>
+	  	  		   </view>
+	  						<svg t="1723816880770" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" 
+	  						p-id="4573" width="20" height="20">
+	  						  <path d="M122.112664 953.98846l816.371172-407.954319c0.723477-0.342808 
+	  						  1.411139-0.689708 2.099824-1.051959l1.107217-0.550539 0-0.077771c11.644201-6.757914 19.488867-19.377326 
+	  						  19.488867-33.827433 0-14.452153-7.844665-27.070542-19.488867-33.828456l0-0.228197L120.241037 
+	  						  65.955154c-1.14508-0.649799-2.310625-1.24127-3.51301-1.77646l-2.481518-1.240247-0.230244 
+	  						  0.170892c-4.047176-1.431605-8.41874-2.196015-12.96222-2.196015-21.589714 0-39.096437 17.506722-39.096437 
+	  						  39.096437 0 0.192382 0 0.382717 0 0.593518l0 821.276902 0.01842 0c0.438998 21.210068 17.754363 38.255279 
+	  						  39.078017 38.255279C108.80559 960.13546 116.040365 957.887256 122.112664 953.98846z" fill="#333" p-id="4574">
+	  						</path>
+	  						</svg>
+	  	  		 </view>
+	  	  	</view>
+	  			</view>
+	  	  </scroll-view>
 	  <uni-section :title="radarPlaylistTitle" type="line"></uni-section>
 	  	
 	  <scroll-view scroll-x enable-flex show-scrollbar="false" style="flex-direction: row;" >
@@ -150,14 +169,18 @@ const goDetail = (id: string) => {
 	.ball-wrap {
 	  width: 100%;
 	  display: flex;
+		overflow: auto;
+		&::-webkit-scrollbar{
+			display: none;
+		}
 	  .ball {
 	    width: 20%;
 	    flex-shrink: 0;
 	    text-align: center;
 	    font-size: 12px;
 	    image {
-	      width: 50%;
-	      height: 40px;
+	      width: 80rpx;
+	      height: 80rpx;
 	      border-radius: 50%;
 	      background: #c84341;
 	    }
@@ -166,6 +189,10 @@ const goDetail = (id: string) => {
 	.list-wrap {
 	  width: 100%;
 	  display: flex;
+		overflow: auto;
+		&::-webkit-scrollbar{
+			display: none;
+		}
 	  .song {
 	    width: 250rpx;
 	    margin-left: 20rpx;
@@ -182,21 +209,32 @@ const goDetail = (id: string) => {
 }
 .changeMusic{
 	display: flex;  
-	height: 300rpx;
+	min-width: 90%;
+	height: 450rpx;
 	padding: 20rpx;
+	overflow: auto!important;
+	&::-webkit-scrollbar{
+		display: none!important;
+	}
 	.outMusic{
-		width: 2000rpx;
-		height:100rpx;
-		overflow-x: scroll;
+		width: 600rpx;
+		height:450rpx;
 		display: flex;
-		// padding: 20rpx;
 		box-sizing: border-box;
+		flex-direction: column;
 		>view{
-			width: 80%;
-			height:100rpx;
+			width: 600rpx;
+			height:150rpx;
 			display: flex;
-			justify-content: flex-start;
 			font-size: 30rpx;
+			justify-content: space-between;
+			align-items: center;
+			.leftall{
+				display: flex;
+			}
+			.icon{
+				margin-right: 80rpx;
+			}
 			.left{
 				display: flex;
 				flex-direction: column;
@@ -205,9 +243,9 @@ const goDetail = (id: string) => {
 					color: #999;
 				}
 			}
-			img{
-				width: 80rpx;
-				height: 80rpx;
+			image{
+				width: 100rpx;
+				height: 100rpx;
 				border-radius: 10rpx;
 			}
 			text{
@@ -220,5 +258,42 @@ const goDetail = (id: string) => {
 	display: flex;
 	align-items: center;
 	font-size: 25rpx;
+}
+.radarAll{
+	display: flex;
+	justify-content: space-between;
+	padding-left: 20rpx;
+		overflow: auto;
+		&::-webkit-scrollbar{
+			display: none;
+		}
+	.radarItem{
+		width: 500rpx;
+		height: 300rpx;
+		// display: flex;
+		flex-direction: column;
+		font-size: 25rpx;
+		&::-webkit-scrollbar{
+				 display: none;
+		}
+	
+		.textover{
+			display: -webkit-box!important;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			-webkit-line-clamp: 2;
+			text-overflow: ellipsis;
+			-webkit-box-orient: vertical;
+			height: 70rpx;
+		}
+		image{
+			width: 200rpx;
+			height: 200rpx;
+			border-radius: 20rpx;
+			&:not(last-child){
+				margin-right: 20rpx;
+			}
+		}
+	}
 }
 </style>
