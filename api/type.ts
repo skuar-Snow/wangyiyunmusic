@@ -375,3 +375,8 @@ export interface SongUrlRes {
   code: number;
   data: SongUrl[];
 }
+
+
+export interface p {
+  code: number;
+}
